@@ -3,7 +3,7 @@
 
     process_csv([])    ->   [];
     process_csv([H|T]) when H == ["name       ","  col"," dist"," a","  angv","   r ","    ..."] -> process_csv(T);
-    process_csv([H|T]) -> [parseALine(is_numeric(lists:nth(3, H)), H), process_csv(T)].
+    process_csv([H|T]) -> [parseALine(is_numeric(lists:nth(3, H)), H) ++ "\n", process_csv(T)].
 
 parseALine(false,T) -> parseNames(T); %sun 
 parseALine(true,T) -> parse(T). %planets
